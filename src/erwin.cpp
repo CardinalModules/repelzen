@@ -256,7 +256,7 @@ struct ErwinWidget : ModuleWidget {
             json_t* rootJ = module->dataToJson();
             if(rootJ) {
 #ifdef USING_CARDINAL_NOT_RACK
-                async_dialog_filebrowser(true, nullptr, "Save scales", [rootJ](char* path) {
+                async_dialog_filebrowser(true, "rewin.json", NULL, "Save scales", [rootJ](char* path) {
                     pathSelected(rootJ, path);
                 });
 #else
@@ -282,7 +282,7 @@ struct ErwinWidget : ModuleWidget {
         void onAction(const event::Action &e) override {
 #ifdef USING_CARDINAL_NOT_RACK
             Erwin* module = this->module;
-            async_dialog_filebrowser(false, nullptr, "Load scales", [module](char* path) {
+            async_dialog_filebrowser(false, NULL, NULL, "Load scales", [module](char* path) {
                 pathSelected(module, path);
             });
 #else
